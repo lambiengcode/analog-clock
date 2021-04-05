@@ -1,28 +1,19 @@
-import 'package:analog_clock/src/app.dart';
-import 'package:analog_clock/src/models/my_theme_provider.dart';
-import 'package:analog_clock/src/theme/theme.dart';
+import 'package:analog_clock/src/routes/app_pages.dart';
+import 'package:analog_clock/src/shared/logger/logger_utils.dart';
+import 'package:analog_clock/src/theme/theme_service.dart';
+import 'package:analog_clock/src/theme/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => MyThemeModel(),
-        child: Consumer<MyThemeModel>(
-          builder: (context, theme, child) => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Analog Clock',
-            theme: themeData(context),
-            darkTheme: darkThemeData(context),
-            themeMode: ThemeMode.dark,
-            home: App(),
-          ),
-        ));
-  }
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    enableLog: true,
+    logWriterCallback: Logger.write,
+    initialRoute: AppPages.INITIAL,
+    getPages: AppPages.routes,
+    theme: Themes().lightTheme,
+    darkTheme: Themes().darkTheme,
+    themeMode: ThemeService().getThemeMode(),
+  ));
 }

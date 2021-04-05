@@ -1,11 +1,9 @@
+import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../public/constants.dart';
-
-// Our light/Primary Theme
-ThemeData themeData(BuildContext context) {
-  return ThemeData(
+class Themes {
+  final lightTheme = ThemeData.light().copyWith(
     appBarTheme: appBarTheme,
     primaryColor: kPrimaryColor,
     accentColor: kAccentLightColor,
@@ -26,11 +24,7 @@ ThemeData themeData(BuildContext context) {
     ),
     brightness: Brightness.light,
   );
-}
-
-// Dark Them
-ThemeData darkThemeData(BuildContext context) {
-  return ThemeData.dark().copyWith(
+  final darkTheme = ThemeData.dark().copyWith(
     primaryColor: kPrimaryColor,
     accentColor: kAccentDarkColor,
     scaffoldBackgroundColor: Color(0xFF0D0C0E),
@@ -52,5 +46,3 @@ ThemeData darkThemeData(BuildContext context) {
     brightness: Brightness.dark,
   );
 }
-
-AppBarTheme appBarTheme = AppBarTheme(color: Colors.transparent, elevation: 0);

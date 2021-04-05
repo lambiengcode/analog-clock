@@ -30,6 +30,9 @@ dependencies:
   google_fonts: ^1.1.0 # it helps us to use google fonts on our app
   flutter_svg: ^0.18.0 # it helps us to use SVG in our app
   provider: ^4.3.2+1 # Our state management package
+  get: ^3.13.3
+  get_storage: ^1.4.0
+  flutter_icons:
 
 dev_dependencies:
   flutter_test:

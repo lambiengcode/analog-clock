@@ -1,6 +1,8 @@
+import 'package:analog_clock/src/models/my_theme_provider.dart';
 import 'package:analog_clock/src/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class App extends StatefulWidget {
   @override
@@ -30,6 +32,9 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return HomeScreen();
+    return ChangeNotifierProvider(
+      create: (_) => MyThemeModel(),
+      child: HomeScreen(),
+    );
   }
 }
