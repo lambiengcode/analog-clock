@@ -1,8 +1,6 @@
 import 'package:analog_clock/src/pages/home/home_screen.dart';
-import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 class App extends StatefulWidget {
   @override

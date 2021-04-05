@@ -3,6 +3,7 @@ import 'package:analog_clock/src/pages/drawer/widgets/under_line.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:intl/intl.dart';
 
 class DrawerLayout extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class DrawerLayout extends StatefulWidget {
 }
 
 class _DrawerLayoutState extends State<DrawerLayout> {
+  DateFormat format = DateFormat('dd/MM/yyyy');
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,8 +22,8 @@ class _DrawerLayoutState extends State<DrawerLayout> {
           Row(
             children: [
               Container(
-                height: width * .08,
-                width: width * .08,
+                height: width * .1,
+                width: width * .1,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -32,27 +34,32 @@ class _DrawerLayoutState extends State<DrawerLayout> {
                   ),
                 ),
               ),
-              SizedBox(width: 12.0),
-              Text(
-                'Dao Hong Vinh',
-                style: TextStyle(
-                  fontSize: width / 26.0,
-                  color: Theme.of(context).iconTheme.color,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+              SizedBox(width: 8.0),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Dao Hong Vinh',
+                    style: TextStyle(
+                      fontSize: width / 24.0,
+                      color: Theme.of(context).textTheme.headline1.color,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 2.5),
+                  Text(
+                    'Today is ${format.format(DateTime.now())}',
+                    style: TextStyle(
+                      fontSize: width / 26.0,
+                      color: Theme.of(context).textTheme.headline1.color,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              )
             ],
-          ),
-          SizedBox(height: 12.0),
-          Text(
-            'Today is 05/04/2021',
-            style: TextStyle(
-              fontSize: width / 22.5,
-              color: Theme.of(context).textTheme.headline4.color,
-              fontFamily: 'Lato',
-              fontWeight: FontWeight.w500,
-            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 16.0),
