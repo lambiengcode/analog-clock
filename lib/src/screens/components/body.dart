@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'clock.dart';
 import 'country_card.dart';
 import 'time_in_hour_and_minute.dart';
@@ -6,6 +7,8 @@ import 'time_in_hour_and_minute.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    DateFormat format = DateFormat('hh:mm');
+
     return SafeArea(
       child: SizedBox(
         width: double.infinity,
@@ -25,18 +28,38 @@ class Body extends StatelessWidget {
                 children: [
                   CountryCard(
                     country: "New York, USA",
-                    timeZone: "+3 HRS | EST",
+                    timeZone: "UTC -5 | EST",
                     iconSrc: "assets/icons/Liberty.svg",
-                    time: "9:20",
+                    time: format.format(
+                      DateTime.now().subtract(
+                        Duration(hours: 11),
+                      ),
+                    ),
                     period: "PM",
                   ),
                   CountryCard(
                     country: "Sydney, AU",
-                    timeZone: "+19 HRS | AEST",
+                    timeZone: "UTC +10 | AEST",
                     iconSrc: "assets/icons/Sydney.svg",
-                    time: "1:20",
+                    time: format.format(
+                      DateTime.now().add(
+                        Duration(hours: 3),
+                      ),
+                    ),
                     period: "AM",
                   ),
+                  CountryCard(
+                    country: "HongKong, China",
+                    timeZone: "UTC +8 | EA",
+                    iconSrc: "assets/icons/Sydney.svg",
+                    time: format.format(
+                      DateTime.now().add(
+                        Duration(hours: 1),
+                      ),
+                    ),
+                    period: "AM",
+                  ),
+                  SizedBox(width: 12.0),
                 ],
               ),
             ),

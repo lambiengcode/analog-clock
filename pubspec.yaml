@@ -33,6 +33,7 @@ dependencies:
   get: ^3.13.3
   get_storage: ^1.4.0
   flutter_icons:
+  intl: ^0.16.0
 
 dev_dependencies:
   flutter_test:
