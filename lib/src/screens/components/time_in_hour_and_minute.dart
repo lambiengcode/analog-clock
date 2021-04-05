@@ -1,8 +1,8 @@
 import 'dart:async';
-
+import 'package:analog_clock/src/public/size_config.dart';
+import 'package:analog_clock/src/screens/controllers/clock_controller.dart';
 import 'package:flutter/material.dart';
-
-import '../../public/size_config.dart';
+import 'package:get/get.dart';
 
 class TimeInHourAndMinute extends StatefulWidget {
   @override
@@ -10,7 +10,9 @@ class TimeInHourAndMinute extends StatefulWidget {
 }
 
 class _TimeInHourAndMinuteState extends State<TimeInHourAndMinute> {
+  final clockController = Get.put(ClockController());
   TimeOfDay _timeOfDay = TimeOfDay.now();
+
   @override
   void initState() {
     super.initState();
@@ -37,7 +39,7 @@ class _TimeInHourAndMinuteState extends State<TimeInHourAndMinute> {
         Text(
           // if you use _timeOfDay.hour then it will show 20:10 like that
           // But we want 8:10
-          "${_timeOfDay.hourOfPeriod}:${_timeOfDay.minute}",
+          "${clockController.formatTime(_timeOfDay.hourOfPeriod)}:${clockController.formatTime(_timeOfDay.minute)}",
           style: Theme.of(context).textTheme.headline1,
         ),
         SizedBox(width: 5),

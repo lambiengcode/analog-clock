@@ -12,7 +12,7 @@ class Body extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Ho Chi Minh, Viet Nam | UTC +7",
+              "Ho Chi Minh, Viet Nam",
               style: Theme.of(context).textTheme.bodyText1,
             ),
             TimeInHourAndMinute(),

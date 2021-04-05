@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:analog_clock/src/models/my_theme_provider.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
+import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
 import 'clock_painter.dart';
 
@@ -61,16 +62,12 @@ class _ClockState extends State<Clock> {
           left: 0,
           right: 0,
           child: Consumer<MyThemeModel>(
-            builder: (context, theme, child) => GestureDetector(
-              onTap: () => theme.changeTheme(),
-              child: SvgPicture.asset(
-                theme.isLightTheme
-                    ? "assets/icons/Sun.svg"
-                    : "assets/icons/Moon.svg",
-                height: 24,
-                width: 24,
-                color: Theme.of(context).primaryColor,
-              ),
+            builder: (context, theme, child) => Icon(
+              ThemeService().getThemeMode() == ThemeMode.dark
+                  ? Feather.moon
+                  : Feather.sun,
+              color: Theme.of(context).primaryColor,
+              size: getProportionateScreenWidth(26),
             ),
           ),
         ),

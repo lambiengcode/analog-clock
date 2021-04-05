@@ -1,7 +1,8 @@
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:analog_clock/src/screens/components/body.dart';
+import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -18,11 +19,16 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       elevation: .0,
       leading: IconButton(
-        icon: SvgPicture.asset(
-          "assets/icons/Settings.svg",
-          color: Theme.of(context).iconTheme.color,
+        icon: Icon(
+          ThemeService().getThemeMode() == ThemeMode.dark
+              ? Feather.moon
+              : Feather.sun,
+          color: Theme.of(context).primaryColor,
+          size: getProportionateScreenWidth(26),
         ),
-        onPressed: () {},
+        onPressed: () {
+          ThemeService().changeThemeMode();
+        },
       ),
       actions: [buildAddButton(context)],
     );
