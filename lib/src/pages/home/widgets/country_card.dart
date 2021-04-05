@@ -1,7 +1,6 @@
+import 'package:analog_clock/src/public/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../public/size_config.dart';
 
 class CountryCard extends StatelessWidget {
   const CountryCard({

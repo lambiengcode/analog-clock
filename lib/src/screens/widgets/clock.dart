@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:analog_clock/src/models/my_theme_provider.dart';
+import 'package:analog_clock/src/pages/widgets/clock_painter.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
-import 'clock_painter.dart';
 
 class Clock extends StatefulWidget {
   @override
@@ -62,12 +62,15 @@ class _ClockState extends State<Clock> {
           left: 0,
           right: 0,
           child: Consumer<MyThemeModel>(
-            builder: (context, theme, child) => Icon(
-              ThemeService().getThemeMode() == ThemeMode.dark
-                  ? Feather.moon
-                  : Feather.sun,
-              color: Theme.of(context).primaryColor,
-              size: getProportionateScreenWidth(26),
+            builder: (context, theme, child) => IconButton(
+              icon: Icon(
+                ThemeService().getThemeMode() == ThemeMode.dark
+                    ? Feather.moon
+                    : Feather.sun,
+                color: Theme.of(context).primaryColor,
+                size: getProportionateScreenWidth(26),
+              ),
+              onPressed: () => ThemeService().changeThemeMode(),
             ),
           ),
         ),

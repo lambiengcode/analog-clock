@@ -1,14 +1,28 @@
+import 'package:analog_clock/src/pages/drawer/drawer.dart';
+import 'package:analog_clock/src/pages/home/widgets/body.dart';
+import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
-import 'package:analog_clock/src/screens/components/body.dart';
-import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomePage extends StatelessWidget {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  openDrawer() {
+    _scaffoldKey.currentState.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Container(
+        width: width * .75,
+        child: Drawer(
+          child: DrawerLayout(),
+        ),
+      ),
       appBar: buildAppBar(context),
       body: Body(),
     );
@@ -20,15 +34,11 @@ class HomeScreen extends StatelessWidget {
       elevation: .0,
       leading: IconButton(
         icon: Icon(
-          ThemeService().getThemeMode() == ThemeMode.dark
-              ? Feather.moon
-              : Feather.sun,
-          color: Theme.of(context).primaryColor,
+          Feather.list,
+          color: Theme.of(context).iconTheme.color,
           size: getProportionateScreenWidth(26),
         ),
-        onPressed: () {
-          ThemeService().changeThemeMode();
-        },
+        onPressed: () => openDrawer(),
       ),
       actions: [buildAddButton(context)],
     );

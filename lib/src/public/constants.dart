@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // Colors
 const kPrimaryColor = Color(0xFFFF97B3);
@@ -22,3 +23,7 @@ const kTitleTextDarkColor = Colors.white;
 const kShadowColor = Color(0xFF364564);
 
 AppBarTheme appBarTheme = AppBarTheme(color: Colors.transparent, elevation: 0);
+
+// Device Size
+var height = Get.height;
+var width = Get.width;

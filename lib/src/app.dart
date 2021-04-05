@@ -1,5 +1,5 @@
-import 'package:analog_clock/src/models/my_theme_provider.dart';
-import 'package:analog_clock/src/screens/home_screen.dart';
+import 'package:analog_clock/src/pages/home/home_screen.dart';
+import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -32,9 +32,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => MyThemeModel(),
-      child: HomeScreen(),
-    );
+    return HomePage();
   }
 }
