@@ -1,3 +1,4 @@
+import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'clock.dart';
@@ -17,8 +18,12 @@ class Body extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Ho Chi Minh, Viet Nam",
-              style: Theme.of(context).textTheme.bodyText1,
+              "Ho Chi Minh, SEA",
+              style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.w600,
+                    fontSize: width / 26.0,
+                  ),
             ),
             TimeInHourAndMinute(),
             Spacer(),

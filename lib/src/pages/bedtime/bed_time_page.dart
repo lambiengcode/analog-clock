@@ -47,9 +47,9 @@ class _BedTimePageState extends State<BedTimePage> {
       child: Column(
         children: [
           _buildTitle(context),
-          SizedBox(height: height * .04),
+          Spacer(flex: 1),
           PickDay(),
-          SizedBox(height: 24.0),
+          Spacer(flex: 2),
           Stack(
             children: [
               CircularPercentIndicator(
@@ -57,8 +57,16 @@ class _BedTimePageState extends State<BedTimePage> {
                 lineWidth: 35.0,
                 percent: .5,
                 circularStrokeCap: CircularStrokeCap.round,
-                progressColor: Theme.of(context).primaryColor,
                 backgroundColor: Theme.of(context).accentColor,
+                linearGradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).secondaryHeaderColor,
+                  ],
+                  tileMode: TileMode.mirror,
+                ),
                 restartAnimation: true,
                 center: Padding(
                   padding: EdgeInsets.symmetric(
@@ -125,7 +133,7 @@ class _BedTimePageState extends State<BedTimePage> {
               ),
             ],
           ),
-          SizedBox(height: height * .05),
+          Spacer(flex: 2),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -135,6 +143,7 @@ class _BedTimePageState extends State<BedTimePage> {
                   context, '06:00', 'Wakeup', Icons.notifications_active),
             ],
           ),
+          Spacer(flex: 3),
         ],
       ),
     );

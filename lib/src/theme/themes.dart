@@ -6,6 +6,7 @@ class Themes {
   final lightTheme = ThemeData.light().copyWith(
     appBarTheme: appBarTheme,
     primaryColor: kPrimaryColor,
+    secondaryHeaderColor: kSecondaryColor,
     accentColor: kAccentLightColor,
     scaffoldBackgroundColor: Colors.white,
     colorScheme: ColorScheme.light(
@@ -26,6 +27,7 @@ class Themes {
   );
   final darkTheme = ThemeData.dark().copyWith(
     primaryColor: kPrimaryColor,
+    secondaryHeaderColor: kSecondaryColor,
     accentColor: kAccentDarkColor,
     scaffoldBackgroundColor: Color(0xFF0D0C0E),
     appBarTheme: appBarTheme,

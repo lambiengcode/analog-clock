@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 // Colors
 const kPrimaryColor = Color(0xFFFF97B3);
+const kSecondaryColor = Color(0xFF1DA1F2);
 const kSecondaryLightColor = Color(0xFFE4E9F2);
 const kSecondaryDarkColor = Color(0xFF404040);
 const kAccentLightColor = Color(0xFFB3BFD7);

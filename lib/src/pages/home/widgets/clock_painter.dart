@@ -109,7 +109,7 @@ class ClockPainter extends CustomPainter {
           style: new TextStyle(
             color: [0, 3, 6, 9].contains(i)
                 ? Theme.of(context).primaryColor
-                : Theme.of(context).accentColor,
+                : Theme.of(context).secondaryHeaderColor,
           ),
           text: i == 0 ? '12' : i.toString());
       TextPainter tp = new TextPainter(
@@ -126,7 +126,9 @@ class ClockPainter extends CustomPainter {
         Offset(hour12Y, hour12X),
         Offset(hour12Yy, hour12Xx),
         Paint()
-          ..color = Theme.of(context).primaryColor
+          ..color = [0, 3, 6, 9].contains(i)
+              ? Theme.of(context).primaryColor
+              : Theme.of(context).secondaryHeaderColor
           ..style = PaintingStyle.stroke
           ..strokeWidth = [0, 3, 6, 9].contains(i) ? 2.5 : 1,
       );
