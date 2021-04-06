@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ClockController extends GetxController {
-  DateTime dateTime = DateTime.now();
+  StreamController<DateTime> currentDay =
+      StreamController<DateTime>.broadcast();
   Timer timer;
+  TimeOfDay timeOfDay = TimeOfDay.now();
   String formatTime(int input) {
     if (input < 10) {
       return '0' + input.toString();
@@ -13,14 +16,7 @@ class ClockController extends GetxController {
 
   startTimer() {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      dateTime = DateTime.now();
-      update();
+      currentDay.add(DateTime.now());
     });
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
   }
 }

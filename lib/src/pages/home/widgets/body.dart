@@ -25,7 +25,9 @@ class Body extends StatelessWidget {
                     fontSize: width / 26.0,
                   ),
             ),
-            TimeInHourAndMinute(),
+            TimeInHourAndMinute(
+              timeOfDay: TimeOfDay.fromDateTime(dateTime),
+            ),
             Spacer(),
             Clock(dateTime: dateTime),
             Spacer(),

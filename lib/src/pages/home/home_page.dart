@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    Get.reset();
+    clockController.timer.cancel();
     super.dispose();
   }
 
@@ -28,10 +28,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: GetBuilder<ClockController>(
-        builder: (_) => Body(
-          dateTime: _.dateTime,
-        ),
+      body: StreamBuilder(
+        stream: clockController.currentDay.stream,
+        builder: (context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return Body(
+              dateTime: DateTime.now(),
+            );
+          }
+
+          return Body(
+            dateTime: snapshot.data,
+          );
+        },
       ),
     );
   }
