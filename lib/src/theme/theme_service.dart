@@ -26,10 +26,26 @@ class ThemeService {
   }
 
   void setBrighness() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Theme.of(Get.context).brightness,
-      statusBarIconBrightness: Theme.of(Get.context).brightness,
-    ));
+    if (GetPlatform.isAndroid) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Theme.of(Get.context).brightness,
+        statusBarIconBrightness: Theme.of(Get.context).brightness,
+      ));
+    } else {
+      if (Theme.of(Get.context).brightness == Brightness.light) {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
+        ));
+      } else {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.light,
+        ));
+      }
+    }
   }
 }

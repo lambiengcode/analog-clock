@@ -39,7 +39,7 @@ class Clock extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: width * .385,
+          top: height * .182,
           left: 0,
           right: 0,
           child: IconButton(

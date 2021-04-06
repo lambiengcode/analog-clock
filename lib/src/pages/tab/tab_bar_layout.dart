@@ -37,7 +37,7 @@ class _TabBarLayoutState extends State<TabBarLayout>
       body: Container(
         child: Column(
           children: [
-            SizedBox(height: height / 25.0),
+            SizedBox(height: height / 20.0),
             _buildTopBar(context),
             SizedBox(height: 16.0),
             Expanded(

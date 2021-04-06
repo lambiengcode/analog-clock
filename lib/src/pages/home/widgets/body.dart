@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Ho Chi Minh, SEA",
+              "Ho Chi Minh, Viet Nam",
               style: Theme.of(context).textTheme.bodyText1.copyWith(
                     fontFamily: 'Lato',
                     fontWeight: FontWeight.w600,
@@ -33,6 +33,13 @@ class Body extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
+                  CountryCard(
+                    country: "Ho Chi Minh, VN",
+                    timeZone: "UTC +7 | SEA",
+                    iconSrc: "assets/icons/Sydney.svg",
+                    time: format.format(DateTime.now()),
+                    period: "PM",
+                  ),
                   CountryCard(
                     country: "New York, USA",
                     timeZone: "UTC -5 | EST",

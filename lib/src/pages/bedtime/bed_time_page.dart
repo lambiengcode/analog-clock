@@ -98,7 +98,7 @@ class _BedTimePageState extends State<BedTimePage> {
                 ),
               ),
               Positioned(
-                top: width * .385,
+                top: height * .186,
                 left: 0,
                 right: 0,
                 child: IconButton(
