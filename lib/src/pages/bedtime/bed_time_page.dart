@@ -1,6 +1,12 @@
+import 'dart:async';
+import 'dart:math';
 import 'package:analog_clock/src/pages/bedtime/widgets/pick_day.dart';
+import 'package:analog_clock/src/pages/home/widgets/clock_painter.dart';
 import 'package:analog_clock/src/public/constants.dart';
+import 'package:analog_clock/src/public/size_config.dart';
+import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class BedTimePage extends StatefulWidget {
@@ -10,6 +16,24 @@ class BedTimePage extends StatefulWidget {
 
 class _BedTimePageState extends State<BedTimePage> {
   bool isOn = true;
+  DateTime dateTime = DateTime.now();
+  Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        dateTime = DateTime.now();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
 
   toggle() {
     setState(() {
@@ -26,12 +50,90 @@ class _BedTimePageState extends State<BedTimePage> {
           SizedBox(height: height * .04),
           PickDay(),
           SizedBox(height: 24.0),
-          CircularPercentIndicator(
-            radius: width * .9,
-            lineWidth: 10.0,
-            percent: .5,
-            center: new Container(),
-            progressColor: Theme.of(context).primaryColor,
+          Stack(
+            children: [
+              CircularPercentIndicator(
+                radius: width * .92,
+                lineWidth: 35.0,
+                percent: .5,
+                circularStrokeCap: CircularStrokeCap.round,
+                progressColor: Theme.of(context).primaryColor,
+                backgroundColor: Theme.of(context).accentColor,
+                restartAnimation: true,
+                center: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(35),
+                  ),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 0),
+                            color: kShadowColor.withOpacity(0.14),
+                            blurRadius: 64,
+                          ),
+                        ],
+                      ),
+                      child: Transform.rotate(
+                        angle: -pi / 2,
+                        child: CustomPaint(
+                          painter: ClockPainter(context, dateTime),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: width * .385,
+                left: 0,
+                right: 0,
+                child: IconButton(
+                  icon: Icon(
+                    ThemeService().getThemeMode() == ThemeMode.dark
+                        ? Feather.moon
+                        : Feather.sun,
+                    color: Theme.of(context).primaryColor,
+                    size: getProportionateScreenWidth(26),
+                  ),
+                  onPressed: () => ThemeService().changeThemeMode(),
+                ),
+              ),
+              Positioned(
+                top: 4,
+                left: 0,
+                right: 0,
+                child: Icon(
+                  Icons.power_settings_new_sharp,
+                  color: Colors.white,
+                  size: width / 16.0,
+                ),
+              ),
+              Positioned(
+                bottom: 4,
+                left: 0,
+                right: 0,
+                child: Icon(
+                  Icons.notifications_active,
+                  color: Colors.white,
+                  size: width / 16.0,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: height * .05),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildBottomTime(
+                  context, '00:00', 'Bedtime', Icons.power_settings_new_sharp),
+              _buildBottomTime(
+                  context, '06:00', 'Wakeup', Icons.notifications_active),
+            ],
           ),
         ],
       ),
@@ -62,6 +164,38 @@ class _BedTimePageState extends State<BedTimePage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildBottomTime(context, time, title, icon) {
+    return Column(
+      children: [
+        Text(
+          time,
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyText1.color,
+            fontFamily: 'Lato',
+            fontSize: width / 12.5,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        SizedBox(height: 8.0),
+        Text(
+          title,
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontFamily: 'Lato',
+            fontSize: width / 25.0,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        SizedBox(height: 6.0),
+        Icon(
+          Icons.notifications_active,
+          color: Theme.of(context).primaryColor,
+          size: width / 14.0,
+        ),
+      ],
     );
   }
 }

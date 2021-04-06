@@ -111,7 +111,7 @@ class ClockPainter extends CustomPainter {
                 ? Theme.of(context).primaryColor
                 : Theme.of(context).accentColor,
           ),
-          text: i.toString());
+          text: i == 0 ? '12' : i.toString());
       TextPainter tp = new TextPainter(
         text: span,
         textAlign: TextAlign.left,

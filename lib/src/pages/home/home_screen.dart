@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  DateTime _dateTime = DateTime.now();
+  DateTime dateTime = DateTime.now();
   Timer _timer;
 
   @override
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
-        _dateTime = DateTime.now();
+        dateTime = DateTime.now();
       });
     });
   }
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     SizeConfig().init(context);
     return Scaffold(
       body: Body(
-        dateTime: _dateTime,
+        dateTime: dateTime,
       ),
     );
   }
