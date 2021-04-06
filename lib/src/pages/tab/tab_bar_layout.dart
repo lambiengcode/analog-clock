@@ -1,3 +1,4 @@
+import 'package:analog_clock/src/pages/bedtime/bed_time_page.dart';
 import 'package:analog_clock/src/pages/home/home_screen.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class _TabBarLayoutState extends State<TabBarLayout>
   var _pages = [
     HomePage(),
     HomePage(),
-    HomePage(),
+    BedTimePage(),
     HomePage(),
     HomePage(),
   ];

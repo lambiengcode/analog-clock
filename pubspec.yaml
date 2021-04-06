@@ -34,6 +34,8 @@ dependencies:
   get_storage: ^1.4.0
   flutter_icons:
   intl: ^0.16.0
+  flutter_neumorphic: ^3.0.4+1
+  percent_indicator: ^2.1.9+1
 
 dev_dependencies:
   flutter_test:

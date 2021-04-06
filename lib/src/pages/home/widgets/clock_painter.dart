@@ -7,6 +7,22 @@ class ClockPainter extends CustomPainter {
   final DateTime dateTime;
 
   ClockPainter(this.context, this.dateTime);
+
+  List<double> clockOffset = [
+    pi / 2,
+    pi / 3,
+    pi / 6,
+    0,
+    -pi / 6,
+    -pi / 3,
+    -pi / 2,
+    -2 * pi / 3,
+    -5 * pi / 6,
+    pi,
+    5 * pi / 6,
+    2 * pi / 3
+  ];
+
   @override
   void paint(Canvas canvas, Size size) {
     double centerX = size.width / 2;
@@ -63,13 +79,66 @@ class ClockPainter extends CustomPainter {
     canvas.drawLine(center, Offset(secondX, secondY),
         Paint()..color = Theme.of(context).primaryColor);
 
-// center Dots
+    // Draw time,
+    // 12h
+    clockOffset.asMap().forEach((i, e) {
+      double hour12XText =
+          centerX + size.width * .38 * cos(e); // * cos((12 * 30) * pi / 180);
+      double hour12YText =
+          centerY - size.width * .38 * sin(e); // * sin((12) * pi / 180);
+
+      double hour12X = centerX +
+          size.width *
+              ([0, 3, 6, 9].contains(i) ? .45 : .47) *
+              cos(e); // * cos((12 * 30) * pi / 180);
+      double hour12Y = centerY +
+          size.width *
+              ([0, 3, 6, 9].contains(i) ? .45 : .47) *
+              sin(e); // * sin((12) * pi / 180);
+      // canvas.drawCircle(
+      //     Offset(hour12Y, hour12X), 4, Paint()..color = Colors.black);
+
+      double hour12Xx =
+          centerX + size.width * 0.49 * cos(e); // * cos((12 * 30) * pi / 180);
+      double hour12Yy =
+          centerY + size.width * 0.49 * sin(e); // * sin((12) * pi / 180);
+      // canvas.drawCircle(
+      //     Offset(hour12Yy, hour12Xx), 4, Paint()..color = Colors.amber);
+      //
+      TextSpan span = new TextSpan(
+          style: new TextStyle(
+            color: [0, 3, 6, 9].contains(i)
+                ? Theme.of(context).primaryColor
+                : Theme.of(context).accentColor,
+          ),
+          text: i.toString());
+      TextPainter tp = new TextPainter(
+        text: span,
+        textAlign: TextAlign.left,
+        textDirection: TextDirection.ltr,
+      );
+      canvas.rotate(pi / 2);
+      tp.layout();
+      tp.paint(canvas,
+          new Offset(hour12XText - 5.0, hour12YText - size.width - 8.0));
+      canvas.rotate(-pi / 2);
+      canvas.drawLine(
+        Offset(hour12Y, hour12X),
+        Offset(hour12Yy, hour12Xx),
+        Paint()
+          ..color = Theme.of(context).primaryColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = [0, 3, 6, 9].contains(i) ? 2.5 : 1,
+      );
+    });
+
+    // Center Dots
     Paint dotPainter = Paint()
       ..color = Theme.of(context).primaryIconTheme.color;
     canvas.drawCircle(center, 24, dotPainter);
     canvas.drawCircle(
         center, 23, Paint()..color = Theme.of(context).backgroundColor);
-    canvas.drawCircle(center, 10, dotPainter);
+    // canvas.drawCircle(center, 10, dotPainter);
   }
 
   @override
