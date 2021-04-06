@@ -36,13 +36,6 @@ class Body extends StatelessWidget {
               child: Row(
                 children: [
                   CountryCard(
-                    country: "Ho Chi Minh, VN",
-                    timeZone: "UTC +7 | SEA",
-                    iconSrc: "assets/icons/Sydney.svg",
-                    time: format.format(DateTime.now()),
-                    period: "PM",
-                  ),
-                  CountryCard(
                     country: "New York, USA",
                     timeZone: "UTC -5 | EST",
                     iconSrc: "assets/icons/Liberty.svg",
@@ -65,7 +58,7 @@ class Body extends StatelessWidget {
                     period: "AM",
                   ),
                   CountryCard(
-                    country: "HongKong, China",
+                    country: "HongKong, CN",
                     timeZone: "UTC +8 | EA",
                     iconSrc: "assets/icons/Sydney.svg",
                     time: format.format(

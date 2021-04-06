@@ -31,14 +31,22 @@ class ClockPainter extends CustomPainter {
 
     // Minute Calculation
     double minX =
-        centerX + size.width * 0.35 * cos((dateTime.minute * 6) * pi / 180);
+        centerX + size.width * 0.335 * cos((dateTime.minute * 6) * pi / 180);
     double minY =
-        centerY + size.width * 0.35 * sin((dateTime.minute * 6) * pi / 180);
+        centerY + size.width * 0.335 * sin((dateTime.minute * 6) * pi / 180);
 
     //Minute Line
     canvas.drawLine(
       center,
       Offset(minX, minY),
+      Paint()
+        ..color = Theme.of(context).accentColor
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 10,
+    );
+    canvas.drawCircle(
+      Offset(minX, minY),
+      .1,
       Paint()
         ..color = Theme.of(context).accentColor
         ..style = PaintingStyle.stroke
@@ -50,17 +58,25 @@ class ClockPainter extends CustomPainter {
     // dateTime.minute * 0.5 each minute we want to turn our hour line a little
     double hourX = centerX +
         size.width *
-            0.3 *
+            0.25 *
             cos((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
     double hourY = centerY +
         size.width *
-            0.3 *
+            0.25 *
             sin((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
 
     // hour Line
     canvas.drawLine(
       center,
       Offset(hourX, hourY),
+      Paint()
+        ..color = Theme.of(context).colorScheme.secondary
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 12.0,
+    );
+    canvas.drawCircle(
+      Offset(hourX, hourY),
+      1.2,
       Paint()
         ..color = Theme.of(context).colorScheme.secondary
         ..style = PaintingStyle.stroke
@@ -83,17 +99,17 @@ class ClockPainter extends CustomPainter {
     // 12h
     clockOffset.asMap().forEach((i, e) {
       double hour12XText =
-          centerX + size.width * .38 * cos(e); // * cos((12 * 30) * pi / 180);
+          centerX + size.width * .4 * cos(e); // * cos((12 * 30) * pi / 180);
       double hour12YText =
-          centerY - size.width * .38 * sin(e); // * sin((12) * pi / 180);
+          centerY - size.width * .4 * sin(e); // * sin((12) * pi / 180);
 
       double hour12X = centerX +
           size.width *
-              ([0, 3, 6, 9].contains(i) ? .45 : .47) *
+              ([0, 3, 6, 9].contains(i) ? .45 : .475) *
               cos(e); // * cos((12 * 30) * pi / 180);
       double hour12Y = centerY +
           size.width *
-              ([0, 3, 6, 9].contains(i) ? .45 : .47) *
+              ([0, 3, 6, 9].contains(i) ? .45 : .475) *
               sin(e); // * sin((12) * pi / 180);
       // canvas.drawCircle(
       //     Offset(hour12Y, hour12X), 4, Paint()..color = Colors.black);
@@ -110,6 +126,12 @@ class ClockPainter extends CustomPainter {
             color: [0, 3, 6, 9].contains(i)
                 ? Theme.of(context).primaryColor
                 : Theme.of(context).secondaryHeaderColor,
+            fontFamily: 'Lato',
+            fontSize: [0, 3, 6, 9].contains(i)
+                ? size.width / 22.0
+                : size.width / 28.0,
+            fontWeight:
+                [0, 3, 6, 9].contains(i) ? FontWeight.w600 : FontWeight.w400,
           ),
           text: i == 0 ? '12' : i.toString());
       TextPainter tp = new TextPainter(
@@ -119,8 +141,10 @@ class ClockPainter extends CustomPainter {
       );
       canvas.rotate(pi / 2);
       tp.layout();
-      tp.paint(canvas,
-          new Offset(hour12XText - 5.0, hour12YText - size.width - 8.0));
+      tp.paint(
+          canvas,
+          new Offset(hour12XText - (i == 0 ? 10.0 : 5.0),
+              hour12YText - size.width - 8.0));
       canvas.rotate(-pi / 2);
       canvas.drawLine(
         Offset(hour12Y, hour12X),

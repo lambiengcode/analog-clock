@@ -38,19 +38,19 @@ class _PickDayState extends State<PickDay> {
 
   Widget _buildAction(context, index) {
     return Container(
-      height: width / 7.5,
-      width: width / 7.5,
+      height: width / 8,
+      width: width / 8,
       alignment: Alignment.center,
       child: NeumorphicButton(
         onPressed: () => pickDay(index),
         child: Text(
           values[index],
-          style: TextStyle(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            fontWeight: FontWeight.w400,
-          ),
+          style: Theme.of(context).textTheme.headline2.copyWith(
+                fontSize: width / 23.0,
+                fontFamily: 'Lato',
+                fontWeight: FontWeight.w400,
+              ),
         ),
-        padding: EdgeInsets.all(width / 25.0),
         style: NeumorphicStyle(
           shape: NeumorphicShape.convex,
           boxShape: NeumorphicBoxShape.circle(),

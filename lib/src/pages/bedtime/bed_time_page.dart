@@ -140,9 +140,9 @@ class _BedTimePageState extends State<BedTimePage> {
           Text(
             'Bedtime Schedule',
             style: TextStyle(
-              color: Theme.of(context).iconTheme.color,
+              color: Theme.of(context).accentColor,
               fontFamily: 'Lato',
-              fontSize: width / 24.0,
+              fontSize: width / 21.5,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -212,7 +212,7 @@ class _BedTimePageState extends State<BedTimePage> {
         ),
         SizedBox(height: 6.0),
         Icon(
-          Icons.notifications_active,
+          icon,
           color: Theme.of(context).primaryColor,
           size: width / 14.0,
         ),
