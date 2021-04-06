@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:analog_clock/src/models/my_theme_provider.dart';
-import 'package:analog_clock/src/pages/widgets/clock_painter.dart';
+import 'package:analog_clock/src/pages/home/widgets/clock_painter.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
