@@ -10,22 +10,17 @@ class App extends StatefulWidget {
 class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   void initState() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
+    ));
     WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
     super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Theme.of(context).brightness,
-      statusBarIconBrightness: Theme.of(context).brightness,
-    ));
   }
 
   @override

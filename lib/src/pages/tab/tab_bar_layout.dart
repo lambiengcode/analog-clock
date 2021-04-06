@@ -1,7 +1,8 @@
 import 'package:analog_clock/src/pages/bedtime/bed_time_page.dart';
-import 'package:analog_clock/src/pages/home/home_screen.dart';
+import 'package:analog_clock/src/pages/home/home_page.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class TabBarLayout extends StatefulWidget {
   @override
@@ -75,31 +76,31 @@ class _TabBarLayoutState extends State<TabBarLayout>
         Tab(
           icon: Icon(
             Icons.alarm,
-            size: width / 14.0,
+            size: width / 15.0,
           ),
         ),
         Tab(
           icon: Icon(
             Icons.watch_later_outlined,
-            size: width / 14.0,
+            size: width / 15.0,
           ),
         ),
         Tab(
           icon: Icon(
-            Icons.king_bed,
-            size: width / 14.0,
+            Icons.king_bed_outlined,
+            size: width / 15.0,
           ),
         ),
         Tab(
           icon: Icon(
-            Icons.today,
-            size: width / 14.0,
+            Icons.alarm_on_outlined,
+            size: width / 15.0,
           ),
         ),
         Tab(
           icon: Icon(
-            Icons.alarm_add,
-            size: width / 14.0,
+            Icons.hourglass_empty_sharp,
+            size: width / 15.0,
           ),
         ),
       ],

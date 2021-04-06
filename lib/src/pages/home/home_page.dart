@@ -1,8 +1,8 @@
-import 'dart:async';
-
+import 'package:analog_clock/src/pages/home/controllers/clock_controller.dart';
 import 'package:analog_clock/src/pages/home/widgets/body.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,22 +10,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  DateTime dateTime = DateTime.now();
-  Timer _timer;
+  final clockController = Get.put(ClockController());
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        dateTime = DateTime.now();
-      });
-    });
+    clockController.startTimer();
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    Get.reset();
     super.dispose();
   }
 
@@ -33,8 +28,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Body(
-        dateTime: dateTime,
+      body: GetBuilder<ClockController>(
+        builder: (_) => Body(
+          dateTime: _.dateTime,
+        ),
       ),
     );
   }

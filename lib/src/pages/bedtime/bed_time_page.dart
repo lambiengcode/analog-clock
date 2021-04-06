@@ -1,12 +1,13 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:analog_clock/src/pages/bedtime/widgets/pick_day.dart';
+import 'package:analog_clock/src/pages/home/controllers/clock_controller.dart';
 import 'package:analog_clock/src/pages/home/widgets/clock_painter.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class BedTimePage extends StatefulWidget {
@@ -15,23 +16,18 @@ class BedTimePage extends StatefulWidget {
 }
 
 class _BedTimePageState extends State<BedTimePage> {
+  final clockController = Get.put(ClockController());
   bool isOn = true;
-  DateTime dateTime = DateTime.now();
-  Timer _timer;
 
   @override
   void initState() {
+    clockController.startTimer();
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        dateTime = DateTime.now();
-      });
-    });
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    clockController.dispose();
     super.dispose();
   }
 
@@ -67,29 +63,34 @@ class _BedTimePageState extends State<BedTimePage> {
                   ],
                   tileMode: TileMode.mirror,
                 ),
-                restartAnimation: true,
-                center: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(35),
-                  ),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.surface,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 0),
-                            color: kShadowColor.withOpacity(0.14),
-                            blurRadius: 64,
+                animationDuration: 2000,
+                addAutomaticKeepAlive: true,
+                animateFromLastPercent: true,
+                rotateLinearGradient: true,
+                center: GetBuilder<ClockController>(
+                  builder: (_) => Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(35),
+                    ),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surface,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 0),
+                              color: kShadowColor.withOpacity(0.14),
+                              blurRadius: 64,
+                            ),
+                          ],
+                        ),
+                        child: Transform.rotate(
+                          angle: -pi / 2,
+                          child: CustomPaint(
+                            painter: ClockPainter(context, _.dateTime),
                           ),
-                        ],
-                      ),
-                      child: Transform.rotate(
-                        angle: -pi / 2,
-                        child: CustomPaint(
-                          painter: ClockPainter(context, dateTime),
                         ),
                       ),
                     ),
