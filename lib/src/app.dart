@@ -1,4 +1,4 @@
-import 'package:analog_clock/src/pages/home/home_screen.dart';
+import 'package:analog_clock/src/pages/tab/tab_bar_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -30,6 +30,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return HomePage();
+    return TabBarLayout();
   }
 }

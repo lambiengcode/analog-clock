@@ -1,21 +1,41 @@
+import 'dart:async';
+
 import 'package:analog_clock/src/pages/home/widgets/body.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _HomePageState();
+}
 
-  openDrawer() {
-    _scaffoldKey.currentState.openDrawer();
+class _HomePageState extends State<HomePage> {
+  DateTime _dateTime = DateTime.now();
+  Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        _dateTime = DateTime.now();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      key: _scaffoldKey,
-      extendBodyBehindAppBar: true,
-      body: Body(),
+      body: Body(
+        dateTime: _dateTime,
+      ),
     );
   }
 

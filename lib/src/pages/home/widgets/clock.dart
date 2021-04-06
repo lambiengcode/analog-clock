@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
@@ -7,32 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'clock_painter.dart';
 
-class Clock extends StatefulWidget {
-  @override
-  _ClockState createState() => _ClockState();
-}
-
-class _ClockState extends State<Clock> {
-  DateTime _dateTime = DateTime.now();
-  Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        _dateTime = DateTime.now();
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  @override
+class Clock extends StatelessWidget {
+  final DateTime dateTime;
+  Clock({this.dateTime});
   Widget build(BuildContext context) {
     return Stack(
       children: [
@@ -56,7 +32,7 @@ class _ClockState extends State<Clock> {
               child: Transform.rotate(
                 angle: -pi / 2,
                 child: CustomPaint(
-                  painter: ClockPainter(context, _dateTime),
+                  painter: ClockPainter(context, dateTime),
                 ),
               ),
             ),
