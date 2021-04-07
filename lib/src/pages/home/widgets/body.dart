@@ -27,6 +27,7 @@ class Body extends StatelessWidget {
             ),
             TimeInHourAndMinute(
               timeOfDay: TimeOfDay.fromDateTime(dateTime),
+              showPeriod: true,
             ),
             Spacer(),
             Clock(dateTime: dateTime),

@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TimeInHourAndMinute extends StatelessWidget {
+  TimeInHourAndMinute({
+    Key key,
+    this.timeOfDay,
+    @required this.showPeriod,
+  }) : super(key: key);
   final TimeOfDay timeOfDay;
-  TimeInHourAndMinute({this.timeOfDay});
-
+  final bool showPeriod;
   final clockController = Get.put(ClockController());
 
   @override
@@ -21,14 +25,21 @@ class TimeInHourAndMinute extends StatelessWidget {
           "${clockController.formatTime(timeOfDay.hourOfPeriod)}:${clockController.formatTime(timeOfDay.minute)}",
           style: Theme.of(context).textTheme.headline1,
         ),
-        SizedBox(width: 5),
-        RotatedBox(
-          quarterTurns: 3,
-          child: Text(
-            _period,
-            style: TextStyle(fontSize: getProportionateScreenWidth(18)),
-          ),
-        ),
+        showPeriod
+            ? Row(
+                children: [
+                  SizedBox(width: 5),
+                  RotatedBox(
+                    quarterTurns: 3,
+                    child: Text(
+                      _period,
+                      style:
+                          TextStyle(fontSize: getProportionateScreenWidth(18)),
+                    ),
+                  )
+                ],
+              )
+            : Container(),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:analog_clock/src/pages/bedtime/bed_time_page.dart';
+import 'package:analog_clock/src/pages/count_down/count_down_page.dart';
 import 'package:analog_clock/src/pages/home/home_page.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _TabBarLayoutState extends State<TabBarLayout>
     HomePage(),
     BedTimePage(),
     HomePage(),
-    HomePage(),
+    CountDownPage(),
   ];
 
   @override

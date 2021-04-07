@@ -96,7 +96,7 @@ class ClockPainter extends CustomPainter {
         Paint()..color = Theme.of(context).primaryColor);
 
     // Draw minute
-    for (int i = 2; i < 60; i++) {
+    for (int i = 1; i < 60; i++) {
       if ([5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].contains(i) == false) {
         double startX = centerX + size.width * 0.475 * cos((i * 6) * pi / 180);
         double startY = centerY + size.width * 0.475 * sin((i * 6) * pi / 180);
