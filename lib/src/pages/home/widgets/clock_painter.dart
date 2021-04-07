@@ -72,11 +72,11 @@ class ClockPainter extends CustomPainter {
       Paint()
         ..color = Theme.of(context).colorScheme.secondary
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 12.0,
+        ..strokeWidth = 15.0,
     );
     canvas.drawCircle(
       Offset(hourX, hourY),
-      1.2,
+      1.5,
       Paint()
         ..color = Theme.of(context).colorScheme.secondary
         ..style = PaintingStyle.stroke
@@ -94,6 +94,19 @@ class ClockPainter extends CustomPainter {
     // Second Line
     canvas.drawLine(center, Offset(secondX, secondY),
         Paint()..color = Theme.of(context).primaryColor);
+
+    // Draw minute
+    for (int i = 2; i < 60; i++) {
+      if ([5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].contains(i) == false) {
+        double startX = centerX + size.width * 0.475 * cos((i * 6) * pi / 180);
+        double startY = centerY + size.width * 0.475 * sin((i * 6) * pi / 180);
+        double endX = centerX + size.width * 0.49 * cos((i * 6) * pi / 180);
+        double endY = centerY + size.width * 0.49 * sin((i * 6) * pi / 180);
+
+        canvas.drawLine(Offset(startX, startY), Offset(endX, endY),
+            Paint()..color = Theme.of(context).primaryColor);
+      }
+    }
 
     // Draw time,
     // 12h
