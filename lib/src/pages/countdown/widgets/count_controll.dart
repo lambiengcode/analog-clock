@@ -1,4 +1,4 @@
-import 'package:analog_clock/src/pages/count_down/controllers/count_down_controller.dart';
+import 'package:analog_clock/src/pages/countdown/controllers/count_down_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 

@@ -1,4 +1,4 @@
-import 'package:analog_clock/src/pages/count_down/controllers/count_down_controller.dart';
+import 'package:analog_clock/src/pages/countdown/controllers/count_down_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/rendering.dart';
@@ -24,8 +24,8 @@ class _PickTimeState extends State<PickTime> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildColumnTime('Hour', hours, hour),
-          _buildColumnTime('Minute', hours, minute),
-          _buildColumnTime('Second', hours, second),
+          _buildColumnTime('Minute', minutes, minute),
+          _buildColumnTime('Second', minutes, second),
         ],
       ),
     );
@@ -38,7 +38,7 @@ class _PickTimeState extends State<PickTime> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 35.0),
+            padding: EdgeInsets.only(left: 38.0),
             child: GetBuilder<CountDownController>(
               builder: (_) => DropdownButtonHideUnderline(
                 child: DropdownButtonFormField(

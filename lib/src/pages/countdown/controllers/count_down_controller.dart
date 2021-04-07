@@ -2,12 +2,12 @@ import 'dart:async';
 import 'package:get/get.dart';
 
 class CountDownController extends GetxController {
-  StreamController<DateTime> currentDay =
+  StreamController<DateTime> currentTime =
       StreamController<DateTime>.broadcast();
   int hour = 0, minute = 0, second = 0;
   double percent = .0;
   bool isRunning = false;
-  DateTime dateTime = DateTime(0, 0, 0, 0, 10, 0);
+  DateTime dateTime = DateTime(0, 0, 0, 0, 0, 0);
   Timer timer;
 
   formatTime(input) {
@@ -28,7 +28,7 @@ class CountDownController extends GetxController {
     minute = m;
     second = s;
     dateTime = DateTime(0, 0, 0, h, m, s);
-    currentDay.add(dateTime);
+    currentTime.add(dateTime);
     update();
   }
 
@@ -40,7 +40,7 @@ class CountDownController extends GetxController {
         stopTimer();
       } else {
         dateTime = dateTime.subtract(Duration(seconds: 1));
-        currentDay.add(dateTime);
+        currentTime.add(dateTime);
         percent = 1.0 -
             ((dateTime.hour * 3600 + dateTime.minute * 60 + dateTime.second) /
                 (hour * 3600 + minute * 60 + second));
@@ -58,7 +58,7 @@ class CountDownController extends GetxController {
   resetTime() {
     dateTime = DateTime(0, 0, 0, hour, minute, second);
     timer.cancel();
-    currentDay.add(dateTime);
+    currentTime.add(dateTime);
     isRunning = false;
     update();
   }

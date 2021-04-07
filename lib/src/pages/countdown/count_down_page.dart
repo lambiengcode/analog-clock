@@ -1,6 +1,6 @@
-import 'package:analog_clock/src/pages/count_down/controllers/count_down_controller.dart';
-import 'package:analog_clock/src/pages/count_down/widgets/count_controll.dart';
-import 'package:analog_clock/src/pages/count_down/widgets/pick_time.dart';
+import 'package:analog_clock/src/pages/countdown/controllers/count_down_controller.dart';
+import 'package:analog_clock/src/pages/countdown/widgets/count_controll.dart';
+import 'package:analog_clock/src/pages/countdown/widgets/pick_time.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -37,7 +37,7 @@ class _CountDownPageState extends State<CountDownPage> {
             children: [
               Spacer(flex: 4),
               StreamBuilder(
-                stream: countDownController.currentDay.stream,
+                stream: countDownController.currentTime.stream,
                 builder: (context, AsyncSnapshot snapshot) {
                   if (!snapshot.hasData) {
                     return _buildClock(DateTime(0, 0, 0, 0, 0, 0));
@@ -75,7 +75,6 @@ class _CountDownPageState extends State<CountDownPage> {
         tileMode: TileMode.mirror,
       ),
       animationDuration: 1000,
-      addAutomaticKeepAlive: true,
       animateFromLastPercent: true,
       rotateLinearGradient: true,
       center: Container(
