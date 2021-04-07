@@ -21,10 +21,12 @@ flutter run
 <p> 
 <img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/clock_light.png?raw=true" width = "200"/>
 <img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/bed_light.png?raw=true" width = "200"/>
+<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/count_down_light.png?raw=true" width = "200"/>
 </p>
 
 - Dark Mode 🌙
 <p> 
 <img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/clock_dark.png?raw=true" width = "200"/>
 <img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/bed_dark.png?raw=true" width = "200"/>
+<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/count_down_dark.png?raw=true" width = "200"/>
 </p>
