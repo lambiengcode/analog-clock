@@ -25,6 +25,14 @@ class ThemeService {
     setBrighness();
   }
 
+  void initBrighness() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Theme.of(Get.context).brightness,
+      statusBarIconBrightness: Theme.of(Get.context).brightness,
+    ));
+  }
+
   void setBrighness() {
     if (GetPlatform.isAndroid) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
