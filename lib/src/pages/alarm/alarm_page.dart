@@ -1,10 +1,10 @@
 import 'package:analog_clock/src/pages/alarm/controllers/alarm_controller.dart';
 import 'package:analog_clock/src/pages/alarm/widgets/list_alarm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
-import '../../public/constants.dart';
+import 'package:analog_clock/src/public/constants.dart';
 
 class AlarmPage extends StatefulWidget {
   @override
@@ -31,28 +31,61 @@ class _AlarmPageState extends State<AlarmPage> {
     return Scaffold(
       body: Container(
         width: width,
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              SizedBox(height: 25.0),
-              StreamBuilder(
-                stream: alarmController.currentTime.stream,
-                builder: (context, AsyncSnapshot snapshot) {
-                  if (!snapshot.hasData) {
-                    return _buildClock(DateTime.now());
-                  }
+        child: Stack(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: Column(
+                children: [
+                  SizedBox(height: 24.0),
+                  StreamBuilder(
+                    stream: alarmController.currentTime.stream,
+                    builder: (context, AsyncSnapshot snapshot) {
+                      if (!snapshot.hasData) {
+                        return _buildClock(DateTime.now());
+                      }
 
-                  return _buildClock(snapshot.data);
-                },
+                      return _buildClock(snapshot.data);
+                    },
+                  ),
+                  SizedBox(height: 25.0),
+                  Expanded(
+                    child: ListAlarm(),
+                  ),
+                  SizedBox(height: 12.0),
+                ],
               ),
-              SizedBox(height: 25.0),
-              Expanded(
-                child: ListAlarm(),
+            ),
+            Positioned(
+              bottom: height * .045,
+              left: 0.0,
+              right: 0.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  NeumorphicButton(
+                    onPressed: () => null,
+                    duration: Duration(milliseconds: 200),
+                    child: Icon(
+                      Icons.add,
+                      size: width / 12.0,
+                    ),
+                    padding: EdgeInsets.all(width / 22.5),
+                    style: NeumorphicStyle(
+                      shape: NeumorphicShape.convex,
+                      boxShape: NeumorphicBoxShape.circle(),
+                      depth: 10.0,
+                      intensity: .15,
+                      surfaceIntensity: .75,
+                      color: Theme.of(context)
+                          .scaffoldBackgroundColor
+                          .withOpacity(.8),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 25.0),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -24,6 +24,7 @@ class AlarmController extends GetxController {
     dateTimes.add(DateTime.now().add(Duration(hours: 3)));
     dateTimes.add(DateTime.now().add(Duration(hours: 4)));
     dateTimes.add(DateTime.now().add(Duration(hours: 5)));
+    dateTimes.add(DateTime.now().add(Duration(hours: 7)));
     // <---> virtual data
     update();
     timer = Timer.periodic(Duration(milliseconds: 17), (timer) {
