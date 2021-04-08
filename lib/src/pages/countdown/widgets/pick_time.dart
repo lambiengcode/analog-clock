@@ -17,9 +17,8 @@ class _PickTimeState extends State<PickTime> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height * .095,
+      height: height * .1,
       width: width,
-      padding: EdgeInsets.symmetric(horizontal: 24.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -33,7 +32,7 @@ class _PickTimeState extends State<PickTime> {
 
   Widget _buildColumnTime(title, List datas, value) {
     return Container(
-      width: width * .2,
+      width: width * .215,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
