@@ -1,4 +1,4 @@
-import 'package:analog_clock/src/pages/home/controllers/clock_controller.dart';
+import 'package:analog_clock/src/pages/global/controllers/clock_controller.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

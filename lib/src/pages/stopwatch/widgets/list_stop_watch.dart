@@ -24,7 +24,7 @@ class _ListStopWatchState extends State<ListStopWatch> {
               ? Container()
               : Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 20.0,
+                    horizontal: 24.0,
                     vertical: 12.0,
                   ),
                   child: Row(

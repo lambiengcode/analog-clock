@@ -1,10 +1,12 @@
+import 'package:analog_clock/src/pages/alarm/alarm_page.dart';
 import 'package:analog_clock/src/pages/bedtime/bed_time_page.dart';
 import 'package:analog_clock/src/pages/countdown/count_down_page.dart';
-import 'package:analog_clock/src/pages/home/home_page.dart';
+import 'package:analog_clock/src/pages/global/global_page.dart';
 import 'package:analog_clock/src/pages/stopwatch/stop_watch_page.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:analog_clock/src/public/size_config.dart';
 
 class TabBarLayout extends StatefulWidget {
   @override
@@ -16,8 +18,8 @@ class _TabBarLayoutState extends State<TabBarLayout>
   TabController _tabController;
 
   var _pages = [
-    HomePage(),
-    HomePage(),
+    AlarmPage(),
+    GlobalPage(),
     BedTimePage(),
     StopWatchPage(),
     CountDownPage(),
@@ -35,6 +37,7 @@ class _TabBarLayoutState extends State<TabBarLayout>
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Container(
         child: Column(

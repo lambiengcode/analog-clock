@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:analog_clock/src/pages/bedtime/widgets/pick_day.dart';
-import 'package:analog_clock/src/pages/home/controllers/clock_controller.dart';
-import 'package:analog_clock/src/pages/home/widgets/clock_painter.dart';
+import 'package:analog_clock/src/pages/global/controllers/clock_controller.dart';
+import 'package:analog_clock/src/pages/global/widgets/clock_painter.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
@@ -161,7 +161,7 @@ class _BedTimePageState extends State<BedTimePage> {
   Widget _buildClock(context, dateTime) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: getProportionateScreenWidth(35),
+        horizontal: 36.0,
       ),
       child: AspectRatio(
         aspectRatio: 1,

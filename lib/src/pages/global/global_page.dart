@@ -1,15 +1,15 @@
-import 'package:analog_clock/src/pages/home/controllers/clock_controller.dart';
-import 'package:analog_clock/src/pages/home/widgets/body.dart';
+import 'package:analog_clock/src/pages/global/controllers/clock_controller.dart';
+import 'package:analog_clock/src/pages/global/widgets/body.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatefulWidget {
+class GlobalPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _HomePageState();
+  State<StatefulWidget> createState() => _GlobalPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _GlobalPageState extends State<GlobalPage> {
   final clockController = Get.put(ClockController());
 
   @override
@@ -26,7 +26,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       body: StreamBuilder(
         stream: clockController.currentDay.stream,

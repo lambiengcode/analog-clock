@@ -49,6 +49,7 @@ class _StopWatchPageState extends State<StopWatchPage> {
                       snapshot.data, stopWatchController.dateTimes[0]);
                 },
               ),
+              Spacer(flex: 1),
               Container(
                 height: height * .3,
                 child: ListStopWatch(),

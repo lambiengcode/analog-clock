@@ -1,7 +1,5 @@
 import 'package:analog_clock/src/pages/countdown/controllers/count_down_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
