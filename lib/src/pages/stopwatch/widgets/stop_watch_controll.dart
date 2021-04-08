@@ -23,8 +23,8 @@ class _StopWatchControllState extends State<StopWatchControll> {
             IconButton(
               onPressed: () => _.resetTime(),
               icon: Icon(
-                Feather.refresh_cw,
-                size: width / 16.0,
+                Icons.refresh,
+                size: width / 12.0,
               ),
             ),
             NeumorphicButton(
@@ -48,7 +48,7 @@ class _StopWatchControllState extends State<StopWatchControll> {
               onPressed: () => _.saveCurrentTime(),
               icon: Icon(
                 Icons.add_alarm_rounded,
-                size: width / 16.0,
+                size: width / 12.0,
               ),
             ),
           ],

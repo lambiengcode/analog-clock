@@ -24,8 +24,8 @@ class _CountControllState extends State<CountControll> {
             IconButton(
               onPressed: () => _.resetTime(),
               icon: Icon(
-                Feather.refresh_cw,
-                size: width / 16.0,
+                Icons.refresh,
+                size: width / 12.0,
               ),
             ),
             NeumorphicButton(
@@ -48,8 +48,8 @@ class _CountControllState extends State<CountControll> {
             IconButton(
               onPressed: () => null,
               icon: Icon(
-                Feather.bell,
-                size: width / 16.0,
+                Icons.notifications,
+                size: width / 12.0,
               ),
             ),
           ],

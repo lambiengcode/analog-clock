@@ -45,19 +45,23 @@ class StopWatchController extends GetxController {
   }
 
   saveCurrentTime() {
-    dateTimes.insert(0, dateTime);
-    scrollController.animateTo(
-      0.0,
-      curve: Curves.easeOut,
-      duration: const Duration(milliseconds: 300),
-    );
-    update();
+    if (isRunning) {
+      dateTimes.insert(0, dateTime);
+      scrollController.animateTo(
+        0.0,
+        curve: Curves.easeOut,
+        duration: const Duration(milliseconds: 300),
+      );
+      update();
+    }
   }
 
   resetTime() {
     dateTime = DateTime(0, 0, 0, 0, 0, 0);
     timer.cancel();
     currentTime.add(dateTime);
+    dateTimes.clear();
+    dateTimes.add(DateTime(0, 0, 0, 0, 0, 0));
     percent = .0;
     isRunning = false;
     update();

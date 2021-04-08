@@ -1,6 +1,7 @@
 import 'package:analog_clock/src/pages/tab/tab_bar_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/utils.dart';
 
 class App extends StatefulWidget {
   @override
@@ -17,8 +18,8 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     ]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: GetPlatform.isAndroid ? Brightness.dark : Brightness.light,
+      statusBarIconBrightness: GetPlatform.isAndroid ?  Brightness.dark : Brightness.light,
     ));
     super.initState();
   }
