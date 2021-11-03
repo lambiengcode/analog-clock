@@ -19,16 +19,16 @@ flutter run
 
 - Light Mode 🌞
 <p> 
-<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/clock_light.png?raw=true" width = "200"/>
-<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/bed_light.png?raw=true" width = "200"/>
-<img src="https://github.com/hongvinhmobile/flutter_analog_clock/blob/master/screenshots/stopwatch_light.png?raw=true" width = "200"/>
-<img src="https://github.com/hongvinhmobile/flutter_analog_clock/blob/master/screenshots/count_down_light.png?raw=true" width = "200"/>
+<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/clock_light.png?raw=true" width = "195"/>
+<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/bed_light.png?raw=true" width = "195"/>
+<img src="https://github.com/hongvinhmobile/flutter_analog_clock/blob/master/screenshots/stopwatch_light.png?raw=true" width = "195"/>
+<img src="https://github.com/hongvinhmobile/flutter_analog_clock/blob/master/screenshots/count_down_light.png?raw=true" width = "195"/>
 </p>
 
 - Dark Mode 🌙
 <p> 
-<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/clock_dark.png?raw=true" width = "200"/>
-<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/bed_dark.png?raw=true" width = "200"/>
-<img src="https://github.com/hongvinhmobile/flutter_analog_clock/blob/master/screenshots/stopwatch_dark.png?raw=true" width = "200"/>
-<img src="https://github.com/hongvinhmobile/flutter_analog_clock/blob/master/screenshots/count_down_dark.png?raw=true" width = "200"/>
+<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/clock_dark.png?raw=true" width = "195"/>
+<img src="https://github.com/hongvinhmobile/flutter_android_alarm/blob/master/screenshots/bed_dark.png?raw=true" width = "195"/>
+<img src="https://github.com/hongvinhmobile/flutter_analog_clock/blob/master/screenshots/stopwatch_dark.png?raw=true" width = "195"/>
+<img src="https://github.com/hongvinhmobile/flutter_analog_clock/blob/master/screenshots/count_down_dark.png?raw=true" width = "195"/>
 </p>
