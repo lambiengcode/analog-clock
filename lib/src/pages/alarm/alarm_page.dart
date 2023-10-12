@@ -1,12 +1,13 @@
 import 'package:analog_clock/src/pages/alarm/controllers/alarm_controller.dart';
 import 'package:analog_clock/src/pages/alarm/widgets/list_alarm.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:analog_clock/src/public/constants.dart';
 
 class AlarmPage extends StatefulWidget {
+  const AlarmPage({super.key});
+
   @override
   State<StatefulWidget> createState() => _AlarmPageState();
 }
@@ -29,7 +30,7 @@ class _AlarmPageState extends State<AlarmPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: width,
         child: Stack(
           children: [
@@ -37,22 +38,22 @@ class _AlarmPageState extends State<AlarmPage> {
               width: double.infinity,
               child: Column(
                 children: [
-                  SizedBox(height: 24.0),
+                  const SizedBox(height: 24.0),
                   StreamBuilder(
                     stream: alarmController.currentTime.stream,
-                    builder: (context, AsyncSnapshot snapshot) {
+                    builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return _buildClock(DateTime.now());
                       }
 
-                      return _buildClock(snapshot.data);
+                      return _buildClock(snapshot.data!);
                     },
                   ),
-                  SizedBox(height: 25.0),
-                  Expanded(
+                  const SizedBox(height: 25.0),
+                  const Expanded(
                     child: ListAlarm(),
                   ),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                 ],
               ),
             ),
@@ -64,22 +65,22 @@ class _AlarmPageState extends State<AlarmPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   NeumorphicButton(
-                    onPressed: () => null,
-                    duration: Duration(milliseconds: 200),
-                    child: Icon(
-                      Icons.add,
-                      size: width / 12.0,
-                    ),
+                    onPressed: () {},
+                    duration: const Duration(milliseconds: 200),
                     padding: EdgeInsets.all(width / 22.5),
                     style: NeumorphicStyle(
                       shape: NeumorphicShape.convex,
-                      boxShape: NeumorphicBoxShape.circle(),
+                      boxShape: const NeumorphicBoxShape.circle(),
                       depth: 10.0,
                       intensity: .15,
                       surfaceIntensity: .75,
                       color: Theme.of(context)
                           .scaffoldBackgroundColor
                           .withOpacity(.8),
+                    ),
+                    child: Icon(
+                      Icons.add,
+                      size: width / 12.0,
                     ),
                   ),
                 ],
@@ -97,7 +98,7 @@ class _AlarmPageState extends State<AlarmPage> {
       lineWidth: 60.0,
       percent: alarmController.percent,
       circularStrokeCap: CircularStrokeCap.round,
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       linearGradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomCenter,
@@ -110,31 +111,29 @@ class _AlarmPageState extends State<AlarmPage> {
       animationDuration: 1000,
       animateFromLastPercent: true,
       rotateLinearGradient: true,
-      center: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              '${alarmController.formatTime(dateTime.hour)}:${alarmController.formatTime(dateTime.minute)}:${alarmController.formatTime(dateTime.second)}',
-              style: Theme.of(context).textTheme.headline1.copyWith(
-                    fontSize: width / 10.0,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.w400,
-                  ),
-            ),
-            SizedBox(height: 2.0),
-            Text(
-              'The alarm will continue\nin 3 hours',
-              style: Theme.of(context).textTheme.headline1.copyWith(
-                    fontSize: width / 26.0,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.w400,
-                    color: Theme.of(context).iconTheme.color,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+      center: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '${alarmController.formatTime(dateTime.hour)}:${alarmController.formatTime(dateTime.minute)}:${alarmController.formatTime(dateTime.second)}',
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  fontSize: width / 10.0,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.w400,
+                ),
+          ),
+          const SizedBox(height: 2.0),
+          Text(
+            'The alarm will continue\nin 3 hours',
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  fontSize: width / 26.0,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.w400,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }

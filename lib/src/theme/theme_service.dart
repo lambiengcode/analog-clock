@@ -28,31 +28,31 @@ class ThemeService {
   void initBrighness() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarBrightness: Theme.of(Get.context).brightness,
-      statusBarIconBrightness: Theme.of(Get.context).brightness,
-    ));
+      statusBarBrightness: Theme.of(Get.context!).brightness,
+      statusBarIconBrightness: Theme.of(Get.context!).brightness,
+    ),);
   }
 
   void setBrighness() {
     if (GetPlatform.isAndroid) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarBrightness: Theme.of(Get.context).brightness,
-        statusBarIconBrightness: Theme.of(Get.context).brightness,
-      ));
+        statusBarBrightness: Theme.of(Get.context!).brightness,
+        statusBarIconBrightness: Theme.of(Get.context!).brightness,
+      ),);
     } else {
-      if (Theme.of(Get.context).brightness == Brightness.light) {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      if (Theme.of(Get.context!).brightness == Brightness.light) {
+        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.dark,
-        ));
+        ),);
       } else {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarBrightness: Brightness.light,
           statusBarIconBrightness: Brightness.light,
-        ));
+        ),);
       }
     }
   }

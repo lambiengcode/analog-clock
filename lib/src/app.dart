@@ -2,9 +2,11 @@ import 'package:analog_clock/src/pages/tab/tab_bar_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'theme/theme_service.dart';
+import 'package:analog_clock/src/theme/theme_service.dart';
 
 class App extends StatefulWidget {
+  const App({super.key});
+
   @override
   State<StatefulWidget> createState() => _AppState();
 }
@@ -23,6 +25,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return TabBarLayout();
+    return const TabBarLayout();
   }
 }

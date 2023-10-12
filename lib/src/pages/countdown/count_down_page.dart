@@ -7,6 +7,8 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:analog_clock/src/public/constants.dart';
 
 class CountDownPage extends StatefulWidget {
+  const CountDownPage({super.key});
+
   @override
   State<StatefulWidget> createState() => _CountDownPageState();
 }
@@ -22,35 +24,35 @@ class _CountDownPageState extends State<CountDownPage> {
 
   @override
   void dispose() {
-    countDownController.timer.cancel();
+    countDownController.timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: width,
         child: SizedBox(
           width: double.infinity,
           child: Column(
             children: [
-              Spacer(flex: 4),
+              const Spacer(flex: 4),
               StreamBuilder(
                 stream: countDownController.currentTime.stream,
-                builder: (context, AsyncSnapshot snapshot) {
+                builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return _buildClock(DateTime(0, 0, 0, 0, 0, 0));
+                    return _buildClock(DateTime(0, 0, 0));
                   }
 
                   return _buildClock(snapshot.data);
                 },
               ),
-              Spacer(flex: 3),
-              PickTime(),
-              Spacer(flex: 2),
-              CountControll(),
-              Spacer(flex: 8),
+              const Spacer(flex: 3),
+              const PickTime(),
+              const Spacer(flex: 2),
+              const CountControll(),
+              const Spacer(flex: 8),
             ],
           ),
         ),
@@ -64,7 +66,7 @@ class _CountDownPageState extends State<CountDownPage> {
       lineWidth: 60.0,
       percent: countDownController.percent,
       circularStrokeCap: CircularStrokeCap.round,
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       linearGradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomCenter,
@@ -77,16 +79,14 @@ class _CountDownPageState extends State<CountDownPage> {
       animationDuration: 1000,
       animateFromLastPercent: true,
       rotateLinearGradient: true,
-      center: Container(
-        child: Center(
-          child: Text(
-            '${countDownController.formatTime(dateTime.hour)}:${countDownController.formatTime(dateTime.minute)}:${countDownController.formatTime(dateTime.second)}',
-            style: Theme.of(context).textTheme.headline1.copyWith(
-                  fontSize: width / 10.0,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.w400,
-                ),
-          ),
+      center: Center(
+        child: Text(
+          '${countDownController.formatTime(dateTime.hour)}:${countDownController.formatTime(dateTime.minute)}:${countDownController.formatTime(dateTime.second)}',
+          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                fontSize: width / 10.0,
+                fontFamily: 'Lato',
+                fontWeight: FontWeight.w400,
+              ),
         ),
       ),
     );

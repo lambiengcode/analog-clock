@@ -4,13 +4,12 @@ part 'app_routes.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class AppPages {
-  static const INITIAL = Routes.ROOT;
+  static const rootRoute = Routes.root;
 
   static final routes = [
     GetPage(
-      name: Routes.ROOT,
-      page: () => App(),
-      children: [],
+      name: Routes.root,
+      page: () => const App(),
     ),
   ];
 }

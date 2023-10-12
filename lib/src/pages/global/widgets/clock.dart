@@ -3,12 +3,13 @@ import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'clock_painter.dart';
+import 'package:analog_clock/src/pages/global/widgets/clock_painter.dart';
+import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 
 class Clock extends StatelessWidget {
   final DateTime dateTime;
-  Clock({this.dateTime});
+  const Clock({super.key, required this.dateTime});
+  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
@@ -23,7 +24,6 @@ class Clock extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    offset: Offset(0, 0),
                     color: kShadowColor.withOpacity(0.14),
                     blurRadius: 64,
                   ),
@@ -45,8 +45,8 @@ class Clock extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               ThemeService().getThemeMode() == ThemeMode.dark
-                  ? Feather.moon
-                  : Feather.sun,
+                  ? PhosphorIcons.moon
+                  : PhosphorIcons.sun,
               color: Theme.of(context).primaryColor,
               size: getProportionateScreenWidth(26),
             ),

@@ -7,8 +7,8 @@ class CountDownController extends GetxController {
   int hour = 0, minute = 0, second = 0;
   double percent = .0;
   bool isRunning = false;
-  DateTime dateTime = DateTime(0, 0, 0, 0, 0, 0);
-  Timer timer;
+  DateTime dateTime = DateTime(0, 0, 0);
+  Timer? timer;
 
   formatTime(input) {
     if (input < 10) {
@@ -18,7 +18,7 @@ class CountDownController extends GetxController {
   }
 
   play() {
-    if ([hour, minute, second].join('') != '000') {
+    if ([hour, minute, second].join() != '000') {
       isRunning ? stopTimer() : startTimer();
     }
   }
@@ -35,11 +35,11 @@ class CountDownController extends GetxController {
   startTimer() {
     isRunning = true;
     update();
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (dateTime.hour == 0 && dateTime.minute == 0 && dateTime.second == 0) {
         stopTimer();
       } else {
-        dateTime = dateTime.subtract(Duration(seconds: 1));
+        dateTime = dateTime.subtract(const Duration(seconds: 1));
         currentTime.add(dateTime);
         percent = 1.0 -
             ((dateTime.hour * 3600 + dateTime.minute * 60 + dateTime.second) /
@@ -50,14 +50,14 @@ class CountDownController extends GetxController {
   }
 
   stopTimer() {
-    timer.cancel();
+    timer?.cancel();
     isRunning = false;
     update();
   }
 
   resetTime() {
     dateTime = DateTime(0, 0, 0, hour, minute, second);
-    timer.cancel();
+    timer?.cancel();
     currentTime.add(dateTime);
     isRunning = false;
     update();

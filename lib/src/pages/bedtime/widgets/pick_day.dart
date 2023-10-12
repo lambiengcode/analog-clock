@@ -1,8 +1,9 @@
 import 'package:analog_clock/src/public/constants.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 
 class PickDay extends StatefulWidget {
+  const PickDay({super.key});
+
   @override
   State<StatefulWidget> createState() => _PickDayState();
 }
@@ -20,7 +21,7 @@ class _PickDayState extends State<PickDay> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -43,22 +44,22 @@ class _PickDayState extends State<PickDay> {
       alignment: Alignment.center,
       child: NeumorphicButton(
         onPressed: () => pickDay(index),
-        child: Text(
-          values[index],
-          style: Theme.of(context).textTheme.headline2.copyWith(
-                fontSize: width / 23.0,
-                fontFamily: 'Lato',
-                fontWeight: FontWeight.w400,
-              ),
-        ),
         style: NeumorphicStyle(
           shape: NeumorphicShape.convex,
-          boxShape: NeumorphicBoxShape.circle(),
+          boxShape: const NeumorphicBoxShape.circle(),
           depth: 6.0,
           intensity: .25,
           color: picked[index]
               ? Theme.of(context).primaryColor
-              : Theme.of(context).accentColor,
+              : Theme.of(context).colorScheme.secondary,
+        ),
+        child: Text(
+          values[index],
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                fontSize: width / 23.0,
+                fontFamily: 'Lato',
+                fontWeight: FontWeight.w400,
+              ),
         ),
       ),
     );

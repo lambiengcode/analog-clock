@@ -5,33 +5,33 @@ import 'package:analog_clock/src/pages/global/global_page.dart';
 import 'package:analog_clock/src/pages/stopwatch/stop_watch_page.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 
 class TabBarLayout extends StatefulWidget {
+  const TabBarLayout({super.key});
+
   @override
   State<StatefulWidget> createState() => _TabBarLayoutState();
 }
 
 class _TabBarLayoutState extends State<TabBarLayout>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  late TabController _tabController;
 
-  var _pages = [
-    AlarmPage(),
-    GlobalPage(),
-    BedTimePage(),
-    StopWatchPage(),
-    CountDownPage(),
+  final _pages = [
+    const AlarmPage(),
+    const GlobalPage(),
+    const BedTimePage(),
+    const StopWatchPage(),
+    const CountDownPage(),
   ];
 
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(
+    _tabController = TabController(
       vsync: this,
       length: _pages.length,
-      initialIndex: 0,
     );
   }
 
@@ -39,22 +39,20 @@ class _TabBarLayoutState extends State<TabBarLayout>
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            SizedBox(height: height / 20.0),
-            _buildTopBar(context),
-            SizedBox(height: 16.0),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: _pages.map((Widget tab) {
-                  return tab;
-                }).toList(),
-              ),
+      body: Column(
+        children: [
+          SizedBox(height: height / 20.0),
+          _buildTopBar(context),
+          const SizedBox(height: 16.0),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: _pages.map((tab) {
+                return tab;
+              }).toList(),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

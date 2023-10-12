@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class GlobalPage extends StatefulWidget {
+  const GlobalPage({super.key});
+
   @override
   State<StatefulWidget> createState() => _GlobalPageState();
 }
@@ -20,7 +22,7 @@ class _GlobalPageState extends State<GlobalPage> {
 
   @override
   void dispose() {
-    clockController.timer.cancel();
+    clockController.timer?.cancel();
     super.dispose();
   }
 
@@ -29,7 +31,7 @@ class _GlobalPageState extends State<GlobalPage> {
     return Scaffold(
       body: StreamBuilder(
         stream: clockController.currentDay.stream,
-        builder: (context, AsyncSnapshot snapshot) {
+        builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Body(
               dateTime: DateTime.now(),
@@ -37,7 +39,7 @@ class _GlobalPageState extends State<GlobalPage> {
           }
 
           return Body(
-            dateTime: snapshot.data,
+            dateTime: snapshot.data!,
           );
         },
       ),
@@ -56,7 +58,7 @@ class _GlobalPageState extends State<GlobalPage> {
             color: Theme.of(context).primaryColor,
             shape: BoxShape.circle,
           ),
-          child: Icon(
+          child: const Icon(
             Icons.add,
             color: Colors.white,
           ),

@@ -23,7 +23,7 @@ const kTitleTextDarkColor = Colors.white;
 
 const kShadowColor = Color(0xFF364564);
 
-AppBarTheme appBarTheme = AppBarTheme(color: Colors.transparent, elevation: 0);
+AppBarTheme appBarTheme = const AppBarTheme(color: Colors.transparent, elevation: 0);
 
 // Device Size
 var height = Get.height;

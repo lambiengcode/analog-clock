@@ -8,14 +8,15 @@ import 'package:get_storage/get_storage.dart';
 
 void main() async {
   await GetStorage.init();
-  runApp(GetMaterialApp(
-    debugShowCheckedModeBanner: false,
-    enableLog: true,
-    logWriterCallback: Logger.write,
-    initialRoute: AppPages.INITIAL,
-    getPages: AppPages.routes,
-    theme: Themes().lightTheme,
-    darkTheme: Themes().darkTheme,
-    themeMode: ThemeService().getThemeMode(),
-  ));
+  runApp(
+    GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      logWriterCallback: Logger.write,
+      initialRoute: AppPages.rootRoute,
+      getPages: AppPages.routes,
+      theme: Themes().lightTheme,
+      darkTheme: Themes().darkTheme,
+      themeMode: ThemeService().getThemeMode(),
+    ),
+  );
 }

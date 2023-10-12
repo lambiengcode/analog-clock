@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class ListAlarm extends StatefulWidget {
+  const ListAlarm({super.key});
+
   @override
   State<StatefulWidget> createState() => _ListAlarmState();
 }
@@ -17,11 +19,11 @@ class _ListAlarmState extends State<ListAlarm> {
     return GetBuilder<AlarmController>(
       builder: (_) => ListView.builder(
         controller: _.scrollController,
-        padding: EdgeInsets.all(.0),
+        padding: EdgeInsets.zero,
         itemCount: _.dateTimes.length,
         itemBuilder: (context, index) {
           return Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 24.0,
               vertical: 12.0,
             ),
@@ -34,24 +36,24 @@ class _ListAlarmState extends State<ListAlarm> {
                   children: [
                     Text(
                       'Alarm: ${index + 1}',
-                      style: Theme.of(context).textTheme.headline1.copyWith(
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontSize: width / 24.0,
                             fontFamily: 'Lato',
                             fontWeight: FontWeight.w600,
                           ),
                     ),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
                     Text(
-                      format.format(_.dateTimes[index]) + ',\t\tAlarm Daily',
-                      style: Theme.of(context).textTheme.headline1.copyWith(
+                      '${format.format(_.dateTimes[index])},\t\tAlarm Daily',
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontSize: width / 24.0,
                             fontFamily: 'Lato',
                             fontWeight: FontWeight.w400,
                             color: Theme.of(context)
                                 .textTheme
-                                .headline1
-                                .color
-                                .withOpacity(.8),
+                                .displayLarge
+                                ?.color
+                                ?.withOpacity(.8),
                           ),
                     ),
                   ],
