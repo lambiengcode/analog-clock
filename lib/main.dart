@@ -1,10 +1,15 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+// Project imports:
 import 'package:analog_clock/src/routes/app_pages.dart';
 import 'package:analog_clock/src/shared/logger/logger_utils.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
 import 'package:analog_clock/src/theme/themes.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 void main() async {
   await GetStorage.init();

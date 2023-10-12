@@ -1,8 +1,13 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:get/get.dart';
+
+// Project imports:
 import 'package:analog_clock/src/pages/global/controllers/clock_controller.dart';
 import 'package:analog_clock/src/pages/global/widgets/body.dart';
 import 'package:analog_clock/src/public/size_config.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class GlobalPage extends StatefulWidget {
   const GlobalPage({super.key});

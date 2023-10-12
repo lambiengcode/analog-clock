@@ -1,5 +1,10 @@
+// Dart imports:
 import 'dart:async';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 
 class ClockController extends GetxController {

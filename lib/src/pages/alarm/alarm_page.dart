@@ -1,8 +1,11 @@
-import 'package:analog_clock/src/pages/alarm/controllers/alarm_controller.dart';
-import 'package:analog_clock/src/pages/alarm/widgets/list_alarm.dart';
+// Package imports:
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+// Project imports:
+import 'package:analog_clock/src/pages/alarm/controllers/alarm_controller.dart';
+import 'package:analog_clock/src/pages/alarm/widgets/list_alarm.dart';
 import 'package:analog_clock/src/public/constants.dart';
 
 class AlarmPage extends StatefulWidget {
@@ -34,11 +37,10 @@ class _AlarmPageState extends State<AlarmPage> {
         width: width,
         child: Stack(
           children: [
-            SizedBox(
-              width: double.infinity,
+            SizedBox.expand(
               child: Column(
                 children: [
-                  const SizedBox(height: 24.0),
+                  const SizedBox(height: 16.0),
                   StreamBuilder(
                     stream: alarmController.currentTime.stream,
                     builder: (context, snapshot) {
@@ -49,7 +51,6 @@ class _AlarmPageState extends State<AlarmPage> {
                       return _buildClock(snapshot.data!);
                     },
                   ),
-                  const SizedBox(height: 25.0),
                   const Expanded(
                     child: ListAlarm(),
                   ),
@@ -94,7 +95,7 @@ class _AlarmPageState extends State<AlarmPage> {
 
   Widget _buildClock(DateTime dateTime) {
     return CircularPercentIndicator(
-      radius: width * .825,
+      radius: width * .45,
       lineWidth: 60.0,
       percent: alarmController.percent,
       circularStrokeCap: CircularStrokeCap.round,

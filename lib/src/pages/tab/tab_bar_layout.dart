@@ -1,10 +1,13 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:analog_clock/src/pages/alarm/alarm_page.dart';
 import 'package:analog_clock/src/pages/bedtime/bed_time_page.dart';
 import 'package:analog_clock/src/pages/countdown/count_down_page.dart';
 import 'package:analog_clock/src/pages/global/global_page.dart';
 import 'package:analog_clock/src/pages/stopwatch/stop_watch_page.dart';
 import 'package:analog_clock/src/public/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 
 class TabBarLayout extends StatefulWidget {

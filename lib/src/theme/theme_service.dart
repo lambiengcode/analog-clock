@@ -1,7 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get_storage/get_storage.dart';
+
+// Package imports:
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ThemeService {
   final _getStorage = GetStorage();

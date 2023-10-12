@@ -1,7 +1,9 @@
-import 'package:analog_clock/src/pages/tab/tab_bar_layout.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// Project imports:
+import 'package:analog_clock/src/pages/tab/tab_bar_layout.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
 
 class App extends StatefulWidget {

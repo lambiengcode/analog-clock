@@ -1,10 +1,17 @@
+// Dart imports:
 import 'dart:math';
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+
+// Project imports:
+import 'package:analog_clock/src/pages/global/widgets/clock_painter.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
-import 'package:flutter/material.dart';
-import 'package:analog_clock/src/pages/global/widgets/clock_painter.dart';
-import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 
 class Clock extends StatelessWidget {
   final DateTime dateTime;

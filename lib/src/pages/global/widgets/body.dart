@@ -1,9 +1,14 @@
-import 'package:analog_clock/src/public/constants.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:intl/intl.dart';
+
+// Project imports:
 import 'package:analog_clock/src/pages/global/widgets/clock.dart';
 import 'package:analog_clock/src/pages/global/widgets/country_card.dart';
 import 'package:analog_clock/src/pages/global/widgets/time_in_hour_and_minute.dart';
+import 'package:analog_clock/src/public/constants.dart';
 
 class Body extends StatelessWidget {
   final DateTime dateTime;

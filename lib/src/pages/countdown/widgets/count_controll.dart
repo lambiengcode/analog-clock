@@ -1,7 +1,10 @@
-import 'package:analog_clock/src/pages/countdown/controllers/count_down_controller.dart';
-import 'package:analog_clock/src/public/constants.dart';
+// Package imports:
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+
+// Project imports:
+import 'package:analog_clock/src/pages/countdown/controllers/count_down_controller.dart';
+import 'package:analog_clock/src/public/constants.dart';
 
 class CountControll extends StatefulWidget {
   const CountControll({super.key});

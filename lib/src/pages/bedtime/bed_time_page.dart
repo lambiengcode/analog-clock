@@ -1,14 +1,21 @@
+// Dart imports:
 import 'dart:math';
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+import 'package:get/get.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+
+// Project imports:
 import 'package:analog_clock/src/pages/bedtime/widgets/pick_day.dart';
 import 'package:analog_clock/src/pages/global/controllers/clock_controller.dart';
 import 'package:analog_clock/src/pages/global/widgets/clock_painter.dart';
 import 'package:analog_clock/src/public/constants.dart';
 import 'package:analog_clock/src/public/size_config.dart';
 import 'package:analog_clock/src/theme/theme_service.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
-import 'package:get/get.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class BedTimePage extends StatefulWidget {
   const BedTimePage({super.key});
@@ -48,9 +55,10 @@ class _BedTimePageState extends State<BedTimePage> {
         const PickDay(),
         const Spacer(flex: 2),
         Stack(
+          alignment: Alignment.center,
           children: [
             CircularPercentIndicator(
-              radius: width * .92,
+              radius: width * .45,
               lineWidth: 35.0,
               percent: .5,
               circularStrokeCap: CircularStrokeCap.round,
@@ -79,7 +87,7 @@ class _BedTimePageState extends State<BedTimePage> {
               ),
             ),
             Positioned(
-              top: height * .186,
+              top: width * .45 - 5,
               left: 0,
               right: 0,
               child: IconButton(
@@ -94,7 +102,7 @@ class _BedTimePageState extends State<BedTimePage> {
               ),
             ),
             Positioned(
-              top: 4,
+              top: 35 / 2 + 8,
               left: 0,
               right: 0,
               child: Icon(
@@ -104,11 +112,11 @@ class _BedTimePageState extends State<BedTimePage> {
               ),
             ),
             Positioned(
-              bottom: 4,
+              bottom: 35 / 2 + 6,
               left: 0,
               right: 0,
               child: Icon(
-                Icons.notifications_active,
+                Icons.notifications_active_outlined,
                 color: Colors.white,
                 size: width / 16.0,
               ),
@@ -167,8 +175,8 @@ class _BedTimePageState extends State<BedTimePage> {
 
   Widget _buildClock(context, dateTime) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 36.0,
+      padding: EdgeInsets.symmetric(
+        horizontal: 35 + width * .05,
       ),
       child: AspectRatio(
         aspectRatio: 1,

@@ -1,8 +1,13 @@
-import 'package:analog_clock/src/pages/stopwatch/controllers/stop_watch_controller.dart';
-import 'package:analog_clock/src/public/constants.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+
+// Project imports:
+import 'package:analog_clock/src/pages/stopwatch/controllers/stop_watch_controller.dart';
+import 'package:analog_clock/src/public/constants.dart';
 
 class ListStopWatch extends StatefulWidget {
   const ListStopWatch({super.key});

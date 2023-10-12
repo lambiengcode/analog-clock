@@ -1,6 +1,11 @@
-import 'package:analog_clock/src/public/constants.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:google_fonts/google_fonts.dart';
+
+// Project imports:
+import 'package:analog_clock/src/public/constants.dart';
 
 class Themes {
   final lightTheme = ThemeData.light().copyWith(

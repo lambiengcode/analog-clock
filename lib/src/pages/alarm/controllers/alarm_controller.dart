@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// Dart imports:
 import 'dart:async';
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:get/get.dart';
 
 class AlarmController extends GetxController {
   StreamController<DateTime> currentTime =

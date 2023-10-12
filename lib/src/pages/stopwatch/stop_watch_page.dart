@@ -1,10 +1,15 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:get/get.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+
+// Project imports:
 import 'package:analog_clock/src/pages/stopwatch/controllers/stop_watch_controller.dart';
 import 'package:analog_clock/src/pages/stopwatch/widgets/list_stop_watch.dart';
 import 'package:analog_clock/src/pages/stopwatch/widgets/stop_watch_controll.dart';
-import 'package:flutter/material.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:analog_clock/src/public/constants.dart';
-import 'package:get/get.dart';
 
 class StopWatchPage extends StatefulWidget {
   const StopWatchPage({super.key});
@@ -32,47 +37,41 @@ class _StopWatchPageState extends State<StopWatchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: width,
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              const Spacer(),
-              StreamBuilder(
-                stream: stopWatchController.currentTime.stream,
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return _buildClock(
-                      DateTime(0, 0, 0),
-                      DateTime(0, 0, 0),
-                    );
-                  }
+      body: Column(
+        children: [
+          const Spacer(),
+          StreamBuilder(
+            stream: stopWatchController.currentTime.stream,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return _buildClock(
+                  DateTime(0, 0, 0),
+                  DateTime(0, 0, 0),
+                );
+              }
 
-                  return _buildClock(
-                    snapshot.data!,
-                    stopWatchController.dateTimes[0],
-                  );
-                },
-              ),
-              const Spacer(),
-              SizedBox(
-                height: height * .3,
-                child: const ListStopWatch(),
-              ),
-              const Spacer(),
-              const StopWatchControll(),
-              const Spacer(flex: 3),
-            ],
+              return _buildClock(
+                snapshot.data!,
+                stopWatchController.dateTimes[0],
+              );
+            },
           ),
-        ),
+          const Spacer(),
+          SizedBox(
+            height: height * .3,
+            child: const ListStopWatch(),
+          ),
+          const Spacer(),
+          const StopWatchControll(),
+          const Spacer(flex: 3),
+        ],
       ),
     );
   }
 
   Widget _buildClock(DateTime dateTime, DateTime dateTimePrevious) {
     return CircularPercentIndicator(
-      radius: width * .825,
+      radius: width * .45,
       lineWidth: 60.0,
       percent: stopWatchController.percent,
       circularStrokeCap: CircularStrokeCap.round,

@@ -1,9 +1,14 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:get/get.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+
+// Project imports:
 import 'package:analog_clock/src/pages/countdown/controllers/count_down_controller.dart';
 import 'package:analog_clock/src/pages/countdown/widgets/count_controll.dart';
 import 'package:analog_clock/src/pages/countdown/widgets/pick_time.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:analog_clock/src/public/constants.dart';
 
 class CountDownPage extends StatefulWidget {
@@ -32,29 +37,25 @@ class _CountDownPageState extends State<CountDownPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox(
-        width: width,
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              const Spacer(flex: 4),
-              StreamBuilder(
-                stream: countDownController.currentTime.stream,
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return _buildClock(DateTime(0, 0, 0));
-                  }
+        child: Column(
+          children: [
+            const Spacer(flex: 4),
+            StreamBuilder(
+              stream: countDownController.currentTime.stream,
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return _buildClock(DateTime(0, 0, 0));
+                }
 
-                  return _buildClock(snapshot.data);
-                },
-              ),
-              const Spacer(flex: 3),
-              const PickTime(),
-              const Spacer(flex: 2),
-              const CountControll(),
-              const Spacer(flex: 8),
-            ],
-          ),
+                return _buildClock(snapshot.data);
+              },
+            ),
+            const Spacer(flex: 3),
+            const PickTime(),
+            const Spacer(flex: 2),
+            const CountControll(),
+            const Spacer(flex: 8),
+          ],
         ),
       ),
     );
@@ -62,7 +63,7 @@ class _CountDownPageState extends State<CountDownPage> {
 
   Widget _buildClock(dateTime) {
     return CircularPercentIndicator(
-      radius: width * .825,
+      radius: width * .45,
       lineWidth: 60.0,
       percent: countDownController.percent,
       circularStrokeCap: CircularStrokeCap.round,

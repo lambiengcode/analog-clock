@@ -1,6 +1,11 @@
-import 'package:analog_clock/src/public/size_config.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_svg/flutter_svg.dart';
+
+// Project imports:
+import 'package:analog_clock/src/public/size_config.dart';
 
 class CountryCard extends StatelessWidget {
   final String country, timeZone, iconSrc, time, period;
